@@ -1,0 +1,20 @@
+<!-- <h2>{{ shero.name | uppercase }} Details</h2>
+<div><span>id: </span>{{ shero.id }}</div>
+<div>
+  <label for="name">Shero name: </label>
+  <input id="name" [(ngModel)]="shero.name" placeholder="name">
+</div> -->
+
+<h2>My Sheroes</h2>
+<ul class="sheroes">
+  <li *ngFor="let shero of sheroes">
+    <button [class.selected]="shero === selectedShero" type="button" (click)="onSelect(shero)">
+      <span class="badge">{{shero.id}}</span>
+      <span class="name">{{shero.name}}</span>
+    </button>
+  </li>
+</ul>
+
+<!-- 单向数据绑定，从 HeroesComponent 的 selectedHero 属性绑定到
+目标元素的 hero 属性，并映射到了 HeroDetailComponent 的 hero 属性 -->
+<app-shero-detail [shero]="selectedShero"></app-shero-detail>
